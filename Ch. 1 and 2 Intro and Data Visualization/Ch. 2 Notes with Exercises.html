@@ -1,0 +1,1151 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>2 Data Visualization</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1cbdf78c-519a-4ff8-96f5-6166d2aa3812" class="page sans"><header><h1 class="page-title">2 Data Visualization</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-relation"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesRelation"><path d="M13.1475 10.5869V3.72363C13.1475 3.25195 12.833 2.93066 12.3477 2.93066H5.48438C5.02637 2.93066 4.70508 3.27246 4.70508 3.67578C4.70508 4.07227 5.05371 4.40039 5.46387 4.40039H7.89746L10.8438 4.30469L9.59961 5.39844L3.08496 11.9199C2.92773 12.0771 2.8457 12.2686 2.8457 12.46C2.8457 12.8564 3.20801 13.2256 3.61816 13.2256C3.80957 13.2256 3.99414 13.1504 4.15137 12.9932L10.6729 6.47168L11.7803 5.22754L11.6641 8.05762V10.6074C11.6641 11.0176 11.9922 11.373 12.4023 11.373C12.8057 11.373 13.1475 11.0312 13.1475 10.5869Z"></path></svg></span>Resource</th><td><a href="https://www.notion.so/R-for-Data-Science-2e-648331be849d4c918d0b008fe9ef3df9?pvs=21">R for Data Science (2e)</a></td></tr><tr class="property-row property-row-relation"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesRelation"><path d="M13.1475 10.5869V3.72363C13.1475 3.25195 12.833 2.93066 12.3477 2.93066H5.48438C5.02637 2.93066 4.70508 3.27246 4.70508 3.67578C4.70508 4.07227 5.05371 4.40039 5.46387 4.40039H7.89746L10.8438 4.30469L9.59961 5.39844L3.08496 11.9199C2.92773 12.0771 2.8457 12.2686 2.8457 12.46C2.8457 12.8564 3.20801 13.2256 3.61816 13.2256C3.80957 13.2256 3.99414 13.1504 4.15137 12.9932L10.6729 6.47168L11.7803 5.22754L11.6641 8.05762V10.6074C11.6641 11.0176 11.9922 11.373 12.4023 11.373C12.8057 11.373 13.1475 11.0312 13.1475 10.5869Z"></path></svg></span>Tags Database</th><td><a href="https://www.notion.so/Visualization-12a2f1d100d044e48aee30534f7fc934?pvs=21"><span class="icon">📊</span>Visualization</a></td></tr><tr class="property-row property-row-relation"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesRelation"><path d="M13.1475 10.5869V3.72363C13.1475 3.25195 12.833 2.93066 12.3477 2.93066H5.48438C5.02637 2.93066 4.70508 3.27246 4.70508 3.67578C4.70508 4.07227 5.05371 4.40039 5.46387 4.40039H7.89746L10.8438 4.30469L9.59961 5.39844L3.08496 11.9199C2.92773 12.0771 2.8457 12.2686 2.8457 12.46C2.8457 12.8564 3.20801 13.2256 3.61816 13.2256C3.80957 13.2256 3.99414 13.1504 4.15137 12.9932L10.6729 6.47168L11.7803 5.22754L11.6641 8.05762V10.6074C11.6641 11.0176 11.9922 11.373 12.4023 11.373C12.8057 11.373 13.1475 11.0312 13.1475 10.5869Z"></path></svg></span>Package Database</th><td><a href="https://www.notion.so/ggplot2-761336185c0e4b6ea084e255816f1eb8?pvs=21">ggplot2</a>, <a href="https://www.notion.so/palmerpenguins-5cc0e3c01c16484f8cc52917f24ba39c?pvs=21">palmerpenguins</a></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesStatus"><path d="M8.75488 1.02344C8.75488 0.613281 8.41309 0.264648 8.00293 0.264648C7.59277 0.264648 7.25098 0.613281 7.25098 1.02344V3.11523C7.25098 3.51855 7.59277 3.86719 8.00293 3.86719C8.41309 3.86719 8.75488 3.51855 8.75488 3.11523V1.02344ZM3.91504 5.0293C4.20215 5.31641 4.69434 5.32324 4.97461 5.03613C5.26855 4.74902 5.26855 4.25684 4.98145 3.96973L3.53906 2.52051C3.25195 2.2334 2.7666 2.21973 2.47949 2.50684C2.19238 2.79395 2.18555 3.28613 2.47266 3.57324L3.91504 5.0293ZM10.9629 4.01758C10.6826 4.30469 10.6826 4.79688 10.9697 5.08398C11.2568 5.37109 11.749 5.36426 12.0361 5.07715L13.4854 3.62793C13.7725 3.34082 13.7725 2.84863 13.4785 2.55469C13.1982 2.27441 12.7061 2.27441 12.4189 2.56152L10.9629 4.01758ZM15.0234 8.78906C15.4336 8.78906 15.7822 8.44727 15.7822 8.03711C15.7822 7.62695 15.4336 7.28516 15.0234 7.28516H12.9385C12.5283 7.28516 12.1797 7.62695 12.1797 8.03711C12.1797 8.44727 12.5283 8.78906 12.9385 8.78906H15.0234ZM0.975586 7.28516C0.56543 7.28516 0.223633 7.62695 0.223633 8.03711C0.223633 8.44727 0.56543 8.78906 0.975586 8.78906H3.07422C3.48438 8.78906 3.83301 8.44727 3.83301 8.03711C3.83301 7.62695 3.48438 7.28516 3.07422 7.28516H0.975586ZM12.0361 10.9902C11.749 10.71 11.2568 10.71 10.9629 10.9971C10.6826 11.2842 10.6826 11.7764 10.9697 12.0635L12.4258 13.5127C12.7129 13.7998 13.2051 13.793 13.4922 13.5059C13.7793 13.2256 13.7725 12.7266 13.4854 12.4395L12.0361 10.9902ZM2.52051 12.4395C2.22656 12.7266 2.22656 13.2188 2.50684 13.5059C2.79395 13.793 3.28613 13.7998 3.57324 13.5127L5.02246 12.0703C5.31641 11.7832 5.31641 11.291 5.03613 11.0039C4.74902 10.7168 4.25684 10.71 3.96973 10.9971L2.52051 12.4395ZM8.75488 12.9658C8.75488 12.5557 8.41309 12.207 8.00293 12.207C7.59277 12.207 7.25098 12.5557 7.25098 12.9658V15.0576C7.25098 15.4609 7.59277 15.8096 8.00293 15.8096C8.41309 15.8096 8.75488 15.4609 8.75488 15.0576V12.9658Z"></path></svg></span>Status</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Last edited time</th><td><time>@June 3, 2023 4:40 PM</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d6be5b55-b883-4fc9-b0cf-38c4af588bcc"><div style="font-size:1.5em"><span class="icon">📝</span></div><div style="width:100%">Descriptive Summary: In this chapter, you’ve learned the basics of data visualization with ggplot2. We started with the basic idea that underpins ggplot2: a visualization is a mapping from variables in your data to aesthetic properties like position, color, size and shape. You then learned about increasing the complexity and improving the presentation of your plots layer-by-layer. You also learned about commonly used plots for visualizing the distribution of a single variable as well as for visualizing relationships between two or more variables, by leveraging additional aesthetic mappings and/or splitting your plot into small multiples using faceting.</div></figure><div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="aa345e9e-7d71-4a1d-8a12-bbd28ee0e8d4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">This document provides an introduction to data visualization in R, including histograms, boxplots, frequency polygons, density plots, and scatterplots. It also includes exercises to practice mapping variables to different aesthetics and saving plots. The document emphasizes best practices for creating effective visualizations, such as using appropriate aesthetics for different data types and specifying output width/height for plots.</div></figure></div><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="eb8c5e7f-12a2-4dec-8b01-d7134b500bbf"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">“The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey</div></figure><hr id="6b4d4170-c6a7-4549-b03f-25a048507e60"/><h1 id="1ae6f787-807a-4911-b212-a35cb2870378" class="">Table of Contents</h1><nav id="fb03419d-3a3d-4f0f-94b1-4ba196178678" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1ae6f787-807a-4911-b212-a35cb2870378">Table of Contents</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dabd13ff-13aa-42a9-a7ee-bc13a1fbaf81">Introduction to ggplot2, tidy data, dataframes, and the ggplot function</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5fd5a3ae-8ae3-4283-9e13-807dfea0883a">Subgrouping plot aesthetics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0854db75-ff69-4f59-bc4d-3376e36e52ac">Global v. local mapping</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#637c0627-c697-4ec4-a895-a7dd6aa00b56">Plot labels</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b64b2ba4-2d03-48b8-8fd7-dd4805ada1d1">2.2.5 Exercises</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#55f51001-4162-4f3d-b087-acc7f5191603">Code documentation and types of variables</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#2ad47031-be45-40f4-8461-a17d8308e3bf">2.4.3 Exercises</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a22c08aa-9050-417c-885a-16c9f1e2a583">Visualizing relationships between at least 2 variables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0a4e9425-47c1-46e5-aa46-92a2cc401a11">Three or more variables</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ca6b3ae8-af5c-4349-8d0a-5181227197f2">2.5.5 Exercises</a></div></nav><h2 id="dabd13ff-13aa-42a9-a7ee-bc13a1fbaf81" class="">Introduction to ggplot2, tidy data, dataframes, and the ggplot function</h2><p id="84803733-19e5-4b2d-89e3-bf09dd701f7c" class=""><span style="border-bottom:0.05em solid"><strong>ggplot2</strong></span> (part of the tidyverse) is based on the <em><em><em><em><em><em>Grammar of Graphics:</em></em></em></em></em></em></p><ul id="c93ce9f5-6296-4b4d-a68d-15965ebf62ca" class="bulleted-list"><li style="list-style-type:disc">Book by TBD (available on Amazon).</li></ul><ul id="730645a0-7485-4461-afbf-3df70bc685af" class="bulleted-list"><li style="list-style-type:disc">System for coherent design and description of graphs.</li></ul><pre id="63b4bc38-b2d3-4bc1-9049-d50023d2e34b" class="code code-wrap"><code>install.packages(&quot;tidyverse&quot;)
+library(tidyverse)</code></pre><p id="5b2ac400-99ae-427d-83d5-95dececb1803" class=""><span style="border-bottom:0.05em solid"><strong>Question</strong></span><strong>:</strong> do penguins with larger flippers weigh more or less than those with shorter flippers? Does it vary by race?</p><p id="bbadabeb-41b6-4293-a9cb-6ecfd91d00f0" class="">A <span style="border-bottom:0.05em solid"><strong><strong><strong><strong><strong><strong><strong><strong><strong>Dataframe (DF)</strong></strong></strong></strong></strong></strong></strong></strong></strong></span> is a rectangular collection of variables (in the columns) and observations (in the rows); this is an example of <span style="border-bottom:0.05em solid"><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>tidy data.</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></span></p><pre id="53c662d4-9c6b-4dc3-9676-cd6f22d2b569" class="code code-wrap"><code>palmerpenguins::penguins
+
+penguins #prints DF
+#&gt; # A tibble: 344 × 8
+#&gt;   species island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year
+#&gt;   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;    &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+#&gt; 1 Adelie  Torgersen           39.1          18.7      181    3750 male   2007
+#&gt; 2 Adelie  Torgersen           39.5          17.4      186    3800 fema…  2007
+#&gt; 3 Adelie  Torgersen           40.3          18        195    3250 fema…  2007
+#&gt; 4 Adelie  Torgersen           NA            NA         NA      NA &lt;NA&gt;   2007
+#&gt; 5 Adelie  Torgersen           36.7          19.3      193    3450 fema…  2007
+#&gt; 6 Adelie  Torgersen           39.3          20.6      190    3650 male   2007
+#&gt; # … with 338 more rows, and abbreviated variable names ¹flipper_length_mm,
+#&gt; #   ²body_mass_g
+
+glimpse(penguins) #prints columns with SOME data
+#&gt; Rows: 344
+#&gt; Columns: 8
+#&gt; $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, A…
+#&gt; $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torge…
+#&gt; $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.…
+#&gt; $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.…
+#&gt; $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, …
+#&gt; $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 347…
+#&gt; $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, m…
+#&gt; $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2…
+
+?penguins #helper function for documentation viewing</code></pre><p id="5238794b-b6ab-4087-8401-782b78b27cff" class="">Plots are always created with <span style="border-bottom:0.05em solid"><strong>ggplot() </strong></span>which defines a plot object which we can add layers and aesthetic to. This can be thought of as an empty canvas.</p><ul id="be07cfa9-33ad-4524-8381-f905b89a08ec" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>data</strong></span> is the dataset to be pulled from</li></ul><ul id="031ee036-7b0a-4a1b-b12c-86d0e656027b" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>mapping</strong></span> defines how variables in the data are applied to visual properties of the plot; always paired with aes.</li></ul><ul id="277306ca-0cb3-4959-b981-6a10b457d054" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>aes</strong></span> defines the aesthetics, or visual properties of the plot; accepts x and y arguments for variable selection to each axis</li></ul><ul id="a8deca71-d6a6-49c3-8969-fb26d350c807" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>geom </strong></span>defines the geometrical object a plot uses to represent data (ex: geom_bar() for a bar plot, geom_boxplot() for a boxplot)<ul id="983e6fcc-3c68-42c1-9386-18cd17790b31" class="bulleted-list"><li style="list-style-type:circle">Scatterplots use geom_point() to add a layer of points; most common comparison for two numerical variables. </li></ul></li></ul><ul id="98b6d675-2206-46ef-905f-7373f1d3697b" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong><strong>labs</strong></strong></span><strong><strong> </strong></strong>defines labels for the plot in a new layer.<ul id="25622e40-15d4-4a6c-979b-af0094d66b50" class="bulleted-list"><li style="list-style-type:circle">Titles, subtitles</li></ul><ul id="392fecbc-bd13-482d-b3dd-07aa834845eb" class="bulleted-list"><li style="list-style-type:circle">x, y</li></ul><ul id="bb504ace-7422-4ee8-812c-5fb4154d704c" class="bulleted-list"><li style="list-style-type:circle">Colors, shapes</li></ul></li></ul><pre id="a28891b3-bd0a-46df-97b8-047ee582c83b" class="code code-wrap"><code>?ggplot
+ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())
+
+ggplot(data = penguins) #data
+
+ggplot( #mapping with aes
+  data = penguins,
+  mapping = aes(x = flipper_length_mm)
+)
+ggplot( #mapping with aes and x/y selection
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+)</code></pre><figure id="c5129d83-a928-48e0-b3e8-203f3d4131f4" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled.png"><img style="width:764px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled.png"/></a><figcaption>Clearly, the x and y are defined on a coordinate system but observations have not yet been articulated from the DF</figcaption></figure><pre id="ee238989-4ff5-4e7a-a9c2-6f558f639a7f" class="code code-wrap"><code>ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point()
+#&gt; Warning: Removed 2 rows containing missing values (`geom_point()`).
+# Two observations were missing either weight or length and were removed as NAs!</code></pre><figure id="77752db2-9772-47fd-aae3-88adb6bb90f7" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%201.png"><img style="width:1504px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%201.png"/></a><figcaption>As flipper length increases, so does body mass. Positive, linear, moderately strong relationship between the two variables. But is there a lurking variable? Species?</figcaption></figure><h2 id="5fd5a3ae-8ae3-4283-9e13-807dfea0883a" class="">Subgrouping plot aesthetics</h2><p id="6ff29a1d-1934-4f30-a804-4c3de6562fb2" class="">How do we include a “by” variable in ggplot2? The aes() call using color or some other marker.</p><pre id="0b6076d3-f334-46a6-aa09-9d75c0c87387" class="code code-wrap"><code>ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)
+) +
+  geom_point()</code></pre><figure id="0df86ef0-e55f-42d9-a6f3-8e26a7b4b204" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%202.png"><img style="width:1492px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%202.png"/></a><figcaption>Species represented as different colors (automatically assigned) by adding it to the aesthetic mapping. Legend automatically outlines meanings, but can remove or reposition if needed.</figcaption></figure><p id="d5467bdf-0952-4f29-b305-825dded3ff9f" class="">Automatically assigning levels to a variable is call <span style="border-bottom:0.05em solid"><strong><strong><strong><strong><strong><strong><strong>Scaling</strong></strong></strong></strong></strong></strong></strong></span><strong><strong><strong><strong><strong><strong><strong>. </strong></strong></strong></strong></strong></strong></strong>Additional objects, such as trend lines or clusters, are assigned using geom_. </p><pre id="acbf2634-7b8f-4ade-83c4-0dfa72aef95b" class="code code-wrap"><code>ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)
+) +
+  geom_point() +
+  geom_smooth()</code></pre><figure id="9cea7730-df54-4546-a7c8-b5796fdc613c" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%203.png"><img style="width:1436px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%203.png"/></a><figcaption>Trendline curves were added, BUT for each species. </figcaption></figure><h2 id="0854db75-ff69-4f59-bc4d-3376e36e52ac" class="">Global v. local mapping</h2><p id="aa72eda4-15b2-4fe1-9f3f-fb7126ab9136" class=""><span style="border-bottom:0.05em solid"><strong>Global levels </strong></span>are added by the mapping argument in the ggplot function, which are inherited levels by all other geom layers of the plot (so a trend would be displayed for each species). <strong>Local levels </strong>can be added by using the <strong><span style="border-bottom:0.05em solid">“+” symbol </span></strong>in place of the pipe operator “%&gt;%” and assigning mapping within the geom_ functions themselves (so a trend line is only assigned to that geom object, for instance the points themselves but NOT the trend line)</p><pre id="bd36a944-fceb-40ec-9b4d-0318eff0894e" class="code code-wrap"><code>ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point(mapping = aes(color = species)) + #colors for points of species
+  geom_smooth() #DOES NOT map by species, just overall; could by assigning additional mapping = aes(color=species) to the geom_smooth() arguments. </code></pre><figure id="ef6f8010-c95d-4c1b-b028-5da4925d2fb6" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%204.png"><img style="width:1470px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%204.png"/></a><figcaption>One trend line!</figcaption></figure><p id="2bede0d4-f304-486f-a16c-377f7e91d360" class="block-color-red_background"><strong>BEST PRACTICE TIP: </strong>do not only map colors to represent information, use symbols or shapes. Colors can be subjective and color blindness exists. </p><pre id="c3add3c8-2f33-427c-8d98-e6de8b7fb936" class="code code-wrap"><code>ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point(mapping = aes(color = species, shape = species)) + #Differentiates by color AND shape (also scales)
+  geom_smooth()</code></pre><figure id="3a480972-63a0-4b9d-b5a0-b400b392b14e" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%205.png"><img style="width:1498px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%205.png"/></a><figcaption>Added shapes to the legend as well.</figcaption></figure><h2 id="637c0627-c697-4ec4-a895-a7dd6aa00b56" class="">Plot labels</h2><p id="6de2a12b-6c2c-4b7a-af1e-55cea408dcbc" class="">Add <span style="border-bottom:0.05em solid"><strong>labels</strong></span> to be more concise with plots.</p><pre id="22705e98-6182-4bb7-a250-f40d1744b779" class="code code-wrap"><code>ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point(aes(color = species, shape = species)) +
+  geom_smooth() +
+  labs(
+    title = &quot;Body mass and flipper length&quot;,
+    subtitle = &quot;Dimensions for Adelie, Chinstrap, and Gentoo Penguins&quot;,
+    x = &quot;Flipper length (mm)&quot;,
+    y = &quot;Body mass (g)&quot;,
+    color = &quot;Species&quot;,
+    shape = &quot;Species&quot;
+  )</code></pre><figure id="53cab203-9431-40e1-8c23-6e2b695330fb" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%206.png"><img style="width:1508px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%206.png"/></a><figcaption>Question answered. </figcaption></figure><h3 id="b64b2ba4-2d03-48b8-8fd7-dd4805ada1d1" class="">2.2.5 Exercises</h3><p id="688911e9-961f-4b31-9644-c0fdc6692628" class="">How many rows are in <code>penguins</code>? How many columns?</p><pre id="8ad9996c-0cdd-4a5e-8a03-99111e97e69a" class="code code-wrap"><code>palmerpenguins::penguins</code></pre><p id="ec219cbe-b936-4ef8-81ca-e73a504e4c36" class="">What does the <code>bill_depth_mm</code> variable in the <code>penguins</code> data frame describe? Read the help for <a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html"><code>?penguins</code></a> to find out.</p><pre id="5c23c5ea-9b11-4c51-bd83-93c2ba24a8b3" class="code code-wrap"><code>?penguins</code></pre><p id="5f6f8c9c-a164-42c0-b294-d992087b6905" class="">Make a scatterplot of <code>bill_depth_mm</code> vs. <code>bill_length_mm</code>. Describe the relationship between these two variables.</p><pre id="953a6426-1e2b-42cd-b202-ae4c11a9b330" class="code code-wrap"><code>ggplot(
+	data=penguins,  
+	mapping = aes(x=bill_length_mm, y=bill_depth_mm)
+) +   
+geom_point() +   
+geom_smooth() +   
+labs(title = &quot;Bill Depth v. Bill Length&quot;,
+     subtitle= &quot;Joshua J. Cook&quot;,     
+		 x = &quot;Bill Length (mm)&quot;,    
+		 y = &quot;Bill Depth (mm)&quot;  
+)</code></pre><figure id="16385d7c-6a31-43a9-aa52-6e69a08b1cfb" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%207.png"><img style="width:1031px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%207.png"/></a></figure><p id="e1ab607d-9a90-408e-b2e0-e5c4032309cd" class="">What happens if you make a scatterplot of <code>species</code> vs <code>bill_depth_mm</code>? Why is the plot not useful?</p><pre id="a647f35c-0218-418c-b37f-a9ae4307bb2c" class="code code-wrap"><code>ggplot(
+	data=penguins,  
+	mapping = aes(x=bill_length_mm, y=species)
+) +   
+geom_point() +   
+geom_smooth() +   
+labs(title = &quot;Species v. Bill Length&quot;,
+     subtitle= &quot;Joshua J. Cook&quot;,     
+		 x = &quot;Bill Length (mm)&quot;,    
+		 y = &quot;Species)&quot;  
+)</code></pre><p id="41ce80ad-1766-4737-affc-b0708ae9a87d" class="">Why does the following give an error and how would you fix it?</p><pre id="cd9bd2ee-7b98-416a-8149-79b32bf8f95e" class="code code-wrap"><code>ggplot(data = penguins) + 
+  geom_point()
+
+#FIX: must define mapping values for x and y; right now it is attempting to plot a scatterplot without any variables
+
+ggplot(
+	data = penguins)
+  mapping = aes(x=x, y=y)
+) + 
+  geom_point()</code></pre><p id="49d350d6-2e0f-494e-aed3-7384446b8ce7" class="">What does the <code>na.rm</code> argument do in <a href="https://ggplot2.tidyverse.org/reference/geom_point.html"><code>geom_point()</code></a>? What is the default value of the argument? Create a scatterplot where you successfully use this argument set to <code>TRUE</code>.</p><pre id="0ec84682-af3d-45fa-97a9-8a9ffb182e03" class="code code-wrap"><code>?geom_print()
+
+geom_point(
+  mapping = NULL, #aesthetic mappings in combo with the global mappings
+  data = NULL, #data source; if null uses global data
+  stat = &quot;identity&quot;, #statistical transformations on the data
+  position = &quot;identity&quot;, #position adjustments 
+  ..., #other arguments
+  na.rm = FALSE, #if FALSE, missing values are removed with warning; if TRUE, missing vlaues are removed without warning.
+  show.legend = NA, #enables legend FOR THIS LOCAL LEVEL
+  inherit.aes = TRUE #if FALSE, overrides the default aes instead of combining; if TRUE, combines globel with local aes
+)
+
+ggplot(
+	data=penguins,  
+	mapping = aes(x=bill_length_mm, y=bill_depth_mm)
+) +   
+geom_point(na.rm=TRUE) +   
+geom_smooth() +   
+labs(title = &quot;Bill Depth v. Bill Length&quot;,
+     subtitle= &quot;Joshua J. Cook&quot;,     
+		 x = &quot;Bill Length (mm)&quot;,    
+		 y = &quot;Bill Depth (mm)&quot;  
+)</code></pre><figure id="a1edd8f6-fd36-489e-a173-aa92576700ca" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%208.png"><img style="width:823px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%208.png"/></a></figure><p id="c00a29cf-d159-4fce-843f-3075b372116a" class="">Add the following caption to the plot you made in the previous exercise: “Data come from the palmerpenguins package.” Hint: Take a look at the documentation for <a href="https://ggplot2.tidyverse.org/reference/labs.html"><code>labs()</code></a>.</p><pre id="9bbdf92d-acd5-4802-9eec-c4b8b10432cd" class="code code-wrap"><code>ggplot(
+	data=penguins,  
+	mapping = aes(x=bill_length_mm, y=bill_depth_mm)
+) +   
+geom_point() +   
+geom_smooth() +   
+labs(title = &quot;Bill Depth v. Bill Length&quot;,
+     subtitle= &quot;Joshua J. Cook&quot;,     
+		 x = &quot;Bill Length (mm)&quot;,    
+		 y = &quot;Bill Depth (mm)&quot;,
+		 caption = &quot;Data come from the palmerpenguins package.&quot;
+)</code></pre><figure id="bed8f5e0-d1c8-428a-bb73-295b5b755475" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%209.png"><img style="width:824px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%209.png"/></a></figure><p id="7f1c5207-87c0-4799-ae67-8bb3648e0864" class="">Recreate the following visualization. What aesthetic should <code>bill_depth_mm</code>be mapped to? And should it be mapped at the global level or at the geom level?</p><figure id="07a7a095-1cc3-489e-8029-8452631403a4" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2010.png"><img style="width:1440px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2010.png"/></a></figure><pre id="4f03b985-8b67-4060-97af-a118247d232a" class="code code-wrap"><code>ggplot(
+	data=penguins,  
+	mapping = aes(x=flipper_length_mm, y=body_mass_g)
+) +   
+geom_point(
+	mapping = aes(color=bill_depth_mm)) +   
+geom_smooth() +   
+labs(title = &quot;Body Mass v. Flipper Length&quot;,
+     subtitle= &quot;Joshua J. Cook&quot;,     
+		 x = &quot;Flipper Length (mm)&quot;,    
+		 y = &quot;Body Mass (g)&quot;
+)</code></pre><figure id="79f74a1b-def3-4cbc-a3ec-93c1d19d3c97" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2011.png"><img style="width:492px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2011.png"/></a><figcaption>AND I did it better with appropriate labels </figcaption></figure><p id="803ef403-7afe-4407-a8e5-12bec2e6a4fe" class="">Run this code in your head and predict what the output will look like. Then, run the code in R and check your predictions.</p><pre id="fdf7f2b1-008a-4410-9e30-c20a3498e1dd" class="code code-wrap"><code>ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
+) +
+  geom_point() +
+  geom_smooth(se = FALSE)
+
+geom_smooth(
+  mapping = NULL,
+  data = NULL,
+  stat = &quot;smooth&quot;,
+  position = &quot;identity&quot;,
+  ...,
+  method = NULL, #The TYPE of trend (ex: lm, glm, quadratic)
+  formula = NULL, #The FORMULA of trend (see above)
+  se = TRUE, #Displays the confidence interval around trend; true by default
+  na.rm = FALSE,
+  orientation = NA, #Sets orientation by x or y 
+  show.legend = NA,
+  inherit.aes = TRUE
+)</code></pre><p id="bb003f47-2d74-4398-a3b6-5cc5505085f0" class=""><strong>PREDICTION: </strong>Body Mass v. Flipper Length scatterplot (point) subgrouped (color) by island in Palmer Archipelago (3 levels) applied at the global level. A trend line will be present for each subgroup as it is inheriting mappings from the global definition. However, confidence levels (seen in the tails above) will not be shown. </p><figure id="45ba1a5a-b438-4873-9f65-ddb8bb0111c1" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2012.png"><img style="width:495px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2012.png"/></a><figcaption>I was correct. </figcaption></figure><p id="aa027f5a-bc1f-495b-91a6-7d6b5fedfa1a" class="">Will these two graphs look different? Why/why not?</p><pre id="0d02686e-1d70-4544-a7f0-a96f514ef16c" class="code code-wrap"><code>ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+  geom_smooth()
+
+ggplot() +
+  geom_point(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  ) +
+  geom_smooth(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  )</code></pre><p id="2e49fa53-e120-45ff-87c1-20fa746172d4" class=""><strong>PREDICTION: No</strong>. The global aesthetic mappings in the first plot are being distributed at the local level instead in the second plot. Overall, the mappings are the same. </p><figure id="82b11118-4927-4431-a1b6-e990f8b2359d" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2013.png"><img style="width:495px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2013.png"/></a></figure><figure id="33803006-dde8-46aa-b784-151ad7587a32" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2014.png"><img style="width:495px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2014.png"/></a><figcaption>I was CORRECT. </figcaption></figure><p id="ae460620-3a29-4989-8880-3eb45b4ebe94" class="block-color-red_background"><strong>BEST PRACTICE TIP: </strong>the first two arguments of a function are usually the most important - know them by heart. In this case, data and mapping. </p><h2 id="55f51001-4162-4f3d-b087-acc7f5191603" class="">Code documentation and types of variables</h2><p id="52dad7ab-4865-4ec5-a69e-1b1bcb21a6fb" class="">A more concise code for the above plot:</p><pre id="1bd3817d-99d1-407b-9204-214d54cb3336" class="code code-wrap"><code>ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point() #data nor mapping are explicit (labelled arguments)
+
+penguins |&gt; #this is a new version of a pipe, %&gt;% #data isn&#x27;t explict
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) + #mapping is explicit
+  geom_point()</code></pre><p id="25fe071a-a1a8-4adc-8843-ca17a1831a9a" class=""><strong>Is this the best for documentation practices? We will see…</strong></p><p id="d767d85c-3501-46b7-aaaf-912b749ae218" class="">How you visualize the distribution or relationship of variables depends on the type <span style="border-bottom:0.05em solid"><strong>(numerical - above, categorical - below). </strong></span></p><p id="2d1c37d4-605a-4a6e-97f1-26260e0bcb81" class=""><span style="border-bottom:0.05em solid"><strong>Categorical variables</strong></span> only take one of a small set of values. We also call these <span style="border-bottom:0.05em solid"><strong>character</strong></span> or <span style="border-bottom:0.05em solid"><strong>factor</strong></span> variables as R codes them. </p><pre id="5b904a5d-40f4-45d7-bbfb-464ef1d59632" class="code code-wrap"><code>ggplot(penguins, aes(x = species)) +
+  geom_bar()</code></pre><figure id="6bb3bb53-113d-4b96-b380-114b79d8c40d" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2015.png"><img style="width:1516px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2015.png"/></a><figcaption>Categorical values (3) can be visualized with bar plots, not scatter plots. This is an example of nominal categorical values (no order). You can apply an order (by frequency) using factors in R. </figcaption></figure><pre id="56ddd526-690f-4f0a-af99-00bb81253915" class="code code-wrap"><code>ggplot(penguins, aes(x = fct_infreq(species))) +
+  geom_bar()</code></pre><figure id="2ca053e7-ff1e-4d42-9410-9677e3becea3" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2016.png"><img style="width:1480px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2016.png"/></a></figure><p id="13571cc1-3f1f-44fa-898c-2e5b8fb661b6" class=""><span style="border-bottom:0.05em solid"><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>Numerical variables</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></span><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong> </strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>can only take any of an infinite set of ordered values (ex: numbers, dates, times). These are also called <span style="border-bottom:0.05em solid"><strong>quantitative</strong></span>  or <span style="border-bottom:0.05em solid"><strong>continuous</strong></span> variables in R. </p><pre id="a762290a-1465-4b3a-96f3-5121d790c864" class="code code-wrap"><code>ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 200)
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_density()</code></pre><figure id="66f9e8f4-80de-4779-8732-c3e3d239b6ac" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2017.png"><img style="width:1464px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2017.png"/></a><figcaption>Visualize with histograms or density plots. Notice only one variables is being mapped (x)</figcaption></figure><pre id="e5a83b80-4a72-4575-8375-02b4455b9118" class="code code-wrap"><code>count(x, ..., wt = NULL, sort = FALSE, name = NULL) #counts # of observations
+
+cut_interval(x, n = NULL, length = NULL, ...) #cuts discrete numerical data into defined categories (levels!)
+
+.penguins |&gt;
+  count(x=cut_width(x=body_mass_g, length=200))
+#&gt; # A tibble: 19 × 2
+#&gt;   `cut_width(body_mass_g, 200)`     n
+#&gt;   &lt;fct&gt;                         &lt;int&gt;
+#&gt; 1 [2.7e+03,2.9e+03]                 7
+#&gt; 2 (2.9e+03,3.1e+03]                10
+#&gt; 3 (3.1e+03,3.3e+03]                23
+#&gt; 4 (3.3e+03,3.5e+03]                38
+#&gt; 5 (3.5e+03,3.7e+03]                39
+#&gt; 6 (3.7e+03,3.9e+03]                37
+#&gt; # … with 13 more rows</code></pre><p id="240e8da9-b64a-4d47-a1af-455af52a74fa" class="block-color-red_background"><strong>BEST PRACTICE TIP: </strong>always experiment with bin widths to reveal patterns and best tell story of data. </p><pre id="a35e4ee6-ac90-4859-b4e5-42699b61f1dc" class="code code-wrap"><code>ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 20)
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 200)
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 2000)</code></pre><figure id="054b843c-3c65-4aee-a26e-5e40fb34e7e2" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2018.png"><img style="width:1468px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2018.png"/></a></figure><h3 id="2ad47031-be45-40f4-8461-a17d8308e3bf" class="">2.4.3 Exercises</h3><ol type="1" id="64209633-fab8-4109-b360-9ca294fb6855" class="numbered-list" start="1"><li>Make a bar plot of <code>species</code> of <code>penguins</code>, where you assign <code>species</code> to the <code>y</code> aesthetic. How is this plot different?</li></ol><pre id="cd039127-9271-4491-9a70-1a843b3be7de" class="code code-wrap"><code>geom_bar(
+  mapping = NULL,
+  data = NULL,
+  stat = &quot;count&quot;,
+  position = &quot;stack&quot;,
+  ...,
+  just = 0.5, #Adjustment for column placement/centering
+  width = NULL, #Bar width; scales based on resolution()
+  na.rm = FALSE,
+  orientation = NA,
+  show.legend = NA,
+  inherit.aes = TRUE
+)
+
+ggplot(
+	data=penguins,
+	mapping = aes(y=species)
+) + 
+geom_bar()</code></pre><figure id="bd9e3dfb-48b3-4e94-85e8-129712b1b72b" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2019.png"><img style="width:507px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2019.png"/></a><figcaption>Mapping to “y” flips the axis. </figcaption></figure><p id="0dfc8809-a775-49ca-88ad-d8e159fbcde0" class="">How are the following two plots different? Which aesthetic, <code>color</code> or <code>fill,</code>is more useful for changing the color of bars?</p><pre id="2cde76ae-0166-45c8-9328-088a9a826dc0" class="code code-wrap"><code>ggplot(penguins, aes(x = species)) +
+  geom_bar(color = &quot;red&quot;) #only colors the outline
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar(fill = &quot;red&quot;) #fills bar</code></pre><figure id="a2b897e2-c8bc-4066-990d-ff94c3b4f44c" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2020.png"><img style="width:499px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2020.png"/></a></figure><figure id="261a066b-ed98-415e-81e9-52b5a17aaa13" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2021.png"><img style="width:493px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2021.png"/></a><figcaption>I was CORRECT. Fill is more useful for coloring bars. </figcaption></figure><p id="6f98ce16-0243-4097-ab53-afcd27febf78" class="">1. What does the <code>bins</code> argument in <a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html"><code>geom_histogram()</code></a> do?</p><pre id="a390e13e-6ed5-4b49-b669-ead7fe9a434f" class="code code-wrap"><code>?geom_histogram()
+
+geom_histogram(
+  mapping = NULL,
+  data = NULL,
+  stat = &quot;bin&quot;,
+  position = &quot;stack&quot;,
+  ...,
+  binwidth = NULL,
+  bins = NULL, #Defines the NUMBER of bins, defaults to 30, overriden by binwidth
+  na.rm = FALSE,
+  orientation = NA,
+  show.legend = NA,
+  inherit.aes = TRUE
+)</code></pre><p id="e3c6ad08-4e5b-459d-8808-9cb0f75bd412" class="">1. Make a histogram of the <code>carat</code> variable in the <code>diamonds</code> dataset. Experiment with different binwidths. What binwidth reveals the most interesting patterns?</p><pre id="d40e0127-90a2-4604-ac75-9a319012040a" class="code code-wrap"><code>ggplot(
+	data=diamonds,
+	mapping=aes(x=carat)
+) + 
+geom_histogram(
+	binwidth=10)
+
+ggplot(
+	data=diamonds,
+	mapping=aes(x=carat)
+) + 
+geom_histogram(
+	binwidth=20)
+
+ggplot(
+	data=diamonds,
+	mapping=aes(x=carat)
+) + 
+geom_histogram(
+	binwidth=30)
+
+ggplot(
+	data=diamonds,
+	mapping=aes(x=carat)
+) + 
+geom_histogram(
+	binwidth=1)
+
+ggplot(
+	data=diamonds,
+	mapping=aes(x=carat)
+) + 
+geom_histogram(
+	binwidth=0.5)</code></pre><figure id="d278d8ca-f5d1-43b2-8aa6-c22750a25af7" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2022.png"><img style="width:497px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2022.png"/></a></figure><figure id="0ef13f84-e9e5-4f0c-8319-b0ee58855a4d" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2023.png"><img style="width:490px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2023.png"/></a></figure><figure id="7d213e3a-7f51-45d7-9445-e0343fbc0ff7" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2024.png"><img style="width:504px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2024.png"/></a></figure><figure id="d7813629-cb30-4fe9-8cc6-6413e884db9a" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2025.png"><img style="width:500px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2025.png"/></a></figure><figure id="07e4e29f-c692-4662-98fb-db63dd946156" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2026.png"><img style="width:498px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2026.png"/></a><figcaption>Smaller binwidth seems better in this case to visualize counts of carat types. </figcaption></figure><h2 id="a22c08aa-9050-417c-885a-16c9f1e2a583" class="">Visualizing relationships between at least 2 variables</h2><p id="fb7e6ac7-0973-480a-ad02-8f51825dfddb" class="">Visualizing <span style="border-bottom:0.05em solid"><strong>relationships</strong></span> requires at least 2 variables to be mapped (in contrast to the histograms above). Usually done with boxplots (geom_boxplot()).</p><p id="30413955-038d-4750-87dd-8d735997716d" class="">Boxplots show:</p><ul id="dbbaf4f4-3d48-40ea-bde7-22ffbbfd8d16" class="bulleted-list"><li style="list-style-type:disc">Min/max lines/whiskers (non-outliers)</li></ul><ul id="d015d9c8-1b57-4c76-97ba-6807544fde50" class="bulleted-list"><li style="list-style-type:disc">25th percentile, 50th percentile (median), 75th percentile = IQR (see below)</li></ul><ul id="575d95a7-726c-4188-add1-43528370239f" class="bulleted-list"><li style="list-style-type:disc">outliers (as points 1.5 x the IQR outside the min or max BY DEFAULT)</li></ul><ul id="d1f370d5-cf63-470f-a4b7-f5546269b623" class="bulleted-list"><li style="list-style-type:disc">The 25/50/75 percentiles make up the interquartile range (IQR), a measure of spread/variation/distribution of the data. </li></ul><ul id="1d8e92de-09eb-4706-8bf9-926688f1db8f" class="bulleted-list"><li style="list-style-type:disc">A boxplot can show you the symmetry about the median and any skewness due to outliers (though, the median is resistant to outliers).</li></ul><figure id="33112f89-445b-4190-a6b7-44b42a2f77d4" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2027.png"><img style="width:1432px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2027.png"/></a></figure><pre id="9e8245af-f492-4952-bf14-3f5c08c76cb0" class="code code-wrap"><code>geom_boxplot(
+  mapping = NULL,
+  data = NULL,
+  stat = &quot;boxplot&quot;,
+  position = &quot;dodge2&quot;,
+  ...,
+  outlier.colour = NULL, #Individual color options for aspects of the plot; if N  ULL, uses the geom mappings instead
+  outlier.color = NULL,
+  outlier.fill = NULL,
+  outlier.shape = 19,
+  outlier.size = 1.5,
+  outlier.stroke = 0.5,
+  outlier.alpha = NULL,
+  notch = FALSE, #Enables notched boxplots for comparing groups; if the boxplots do not overlap, the medians are significantly different 
+  notchwidth = 0.5,
+  varwidth = FALSE,
+  na.rm = FALSE,
+  orientation = NA,
+  show.legend = NA,
+  inherit.aes = TRUE
+)
+
+stat_boxplot(
+  mapping = NULL,
+  data = NULL,
+  geom = &quot;boxplot&quot;,
+  position = &quot;dodge2&quot;,
+  ...,
+  coef = 1.5, #Lenghts of whiskers as multiples of the IQR
+  na.rm = FALSE,
+  orientation = NA,
+  show.legend = NA,
+  inherit.aes = TRUE
+)
+
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_boxplot()</code></pre><figure id="af7ded28-4eb7-40e3-a95d-b243f67cdf36" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2028.png"><img style="width:1504px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2028.png"/></a><figcaption>Shows the numerical distribution  of body mass for 1 categorical variable species (with 3 levels)</figcaption></figure><p id="cc6a27e8-d84c-484c-9d5a-570ad27ac3c8" class="">Can also use <span style="border-bottom:0.05em solid"><strong>frequency polygons using geom_freqpoly()</strong></span> to show relationships between categorical and numerical variables. </p><pre id="1aea3a6b-6b67-4d33-a2a2-b6aea3a411f4" class="code code-wrap"><code>geom_freqpoly(
+  mapping = NULL,
+  data = NULL,
+  stat = &quot;bin&quot;,
+  position = &quot;identity&quot;,
+  ...,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE
+)
+
+ggplot(penguins, aes(x = body_mass_g, color = species)) +
+  geom_freqpoly(binwidth = 200, linewidth = 0.75)</code></pre><figure id="73bda5d6-eeab-44fd-ace2-9ecaa6580567" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2029.png"><img style="width:1486px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2029.png"/></a></figure><p id="18361771-c044-403c-96fb-18ad9acfdd76" class=""><span style="border-bottom:0.05em solid"><strong>Density plots</strong></span> are like smoothed versions of histograms;<span style="border-bottom:0.05em solid"><strong> geom_density. </strong></span></p><pre id="23b4c84d-5bfc-4ad1-9bf9-3006f41e2233" class="code code-wrap"><code>geom_density(
+  mapping = NULL,
+  data = NULL,
+  stat = &quot;density&quot;,
+  position = &quot;identity&quot;,
+  ...,
+  na.rm = FALSE,
+  orientation = NA,
+  show.legend = NA,
+  inherit.aes = TRUE,
+  outline.type = &quot;upper&quot;
+)
+
+ggplot(penguins, aes(x = body_mass_g, color = species)) +
+  geom_density() #shows all three species with overalappping density plots
+
+ggplot(penguins, aes(x = body_mass_g, color = species, fill = species)) +
+  geom_density(alpha = 0.5) #fills area under the curve (AUC) with color; alpha adds transparency to the AUC so all three can be visualized (0 = transparent, 1=opaque)
+</code></pre><figure id="757d0e80-7cdc-4091-82f8-93c22ad6dafa" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2030.png"><img style="width:1512px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2030.png"/></a></figure><p id="8cdace40-d99b-468b-b6eb-12805e81aa35" class="block-color-red_background"><strong>BEST PRACTICE TIP: </strong>we <em><em><em>map</em></em></em> variables to aesthetics if we want the visual attribute represented by that aes to VARY based on the values of that VARIABLE. We <em><em><em>set</em></em></em> the value of a constant aes.  </p><p id="0722205d-16e4-43e3-bd2b-c7c66c7e7a9f" class="">geom_bar can also be segmented to display multiple categorical variables. </p><pre id="0d83f7d1-e197-480a-9145-d63d33cb69d0" class="code code-wrap"><code>geom_bar(
+  mapping = NULL, # map a second categorical value using fill to stack variables
+  data = NULL,
+  stat = &quot;count&quot;,
+  position = &quot;stack&quot;, # use &quot;fill&quot; to set to rel. freq.
+  ...,
+  just = 0.5,
+  width = NULL,
+  na.rm = FALSE,
+  orientation = NA,
+  show.legend = NA,
+  inherit.aes = TRUE
+)
+
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar()
+
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(position = &quot;fill&quot;)</code></pre><figure id="8296e92e-b148-486c-b807-c33a222d29d3" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2031.png"><img style="width:1522px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2031.png"/></a><figcaption>A stacked bar chart with two categorical variables: island (x) and species (fill). Both in the global mapping aesthetics. Great to visualize counts across. </figcaption></figure><figure id="09008fd1-b20a-419c-a941-19bdfa411be7" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2032.png"><img style="width:1520px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2032.png"/></a><figcaption>By using the relative frequencies, you get proportions for each variable. 75% of the penguins on Biscoe are Gentoo. 100% of the penguins on Torgerson are Adelie. </figcaption></figure><h2 id="0a4e9425-47c1-46e5-aa46-92a2cc401a11" class="">Three or more variables</h2><p id="4654b341-539d-4718-9d45-e7d33f749c27" class="">How? Map more variables to more aesthetics:</p><pre id="76baac8a-f6d9-4e33-ad23-3ad887ca5eb8" class="code code-wrap"><code>ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, shape = island))</code></pre><figure id="2a704d66-3c71-497f-acb1-4846343ebed2" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2033.png"><img style="width:1472px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2033.png"/></a><figcaption>Problem? It’s getting hard to read this graph. </figcaption></figure><p id="393e578b-d8b8-4868-be99-e59cceb7a883" class="">How do we break these pieces apart? Facets - allow splitting a plot into subplots in one display; use facet_wrap().</p><pre id="4c65f19d-dafe-4a84-86cb-8eaf4905f618" class="code code-wrap"><code>facet_wrap(
+  facets, #set of variables indicated by &quot;~variablename&quot;
+  nrow = NULL,
+  ncol = NULL,
+  scales = &quot;fixed&quot;,
+  shrink = TRUE,
+  labeller = &quot;label_value&quot;,
+  as.table = TRUE,
+  switch = deprecated(),
+  drop = TRUE,
+  dir = &quot;h&quot;,
+  strip.position = &quot;top&quot;
+)
+
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, shape = species)) +
+  facet_wrap(~island)</code></pre><figure id="d1bdbdac-1294-43db-9d42-83dbe57c5142" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2034.png"><img style="width:1554px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2034.png"/></a><figcaption>Graphs for EACH island (~island). Could do for sex, tissue type, etc.</figcaption></figure><h3 id="ca6b3ae8-af5c-4349-8d0a-5181227197f2" class="">2.5.5 Exercises</h3><p id="71ae246c-2a3b-43f8-8871-6ed6ae2b7202" class="">Which variables in <code>mpg</code> are categorical? Which variables are continuous? (Hint: type <a href="https://ggplot2.tidyverse.org/reference/mpg.html"><code>?mpg</code></a> to read the documentation for the dataset). How can you see this information when you run <code>mpg</code>?</p><pre id="214dd344-68ce-450b-a2ea-ff083d0e7851" class="code code-wrap"><code>?mpg
+lapply(mpg, class)</code></pre><p id="d8dd11f7-0892-457a-94dc-4b459fb2939e" class="">Make a scatterplot of <code>hwy</code> vs. <code>displ</code> using the <code>mpg</code> data frame. Next, map a third, numerical variable to <code>color</code>, then <code>size</code>, then both <code>color</code> and <code>size</code>, then <code>shape</code>. How do these aesthetics behave differently for categorical vs. numerical variables?</p><pre id="19c91079-a0be-4597-84aa-3700bc6b0321" class="code code-wrap"><code>ggplot(  
+	data=mpg,  
+	mapping= aes(x=displ, y=hwy)
+) +   
+	geom_point()
+
+ggplot(  
+	data=mpg,  
+	mapping= aes(x=displ, y=hwy, color=cty)
+) +   
+	geom_point()
+
+ggplot(  
+	data=mpg,  
+	mapping= aes(x=displ, y=hwy, color=cty, size=cty)
+) +   
+	geom_point()
+
+ggplot(  
+	data=mpg,  
+	mapping= aes(x=displ, y=hwy, color=cty, size=cty, shape=cty)
+) +   
+	geom_point()</code></pre><figure id="04e5463b-85a1-4975-9d8b-171067915699" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2035.png"><img style="width:508px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2035.png"/></a></figure><figure id="54820536-dff8-4261-9afe-a46b06d448b4" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2036.png"><img style="width:494px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2036.png"/></a></figure><figure id="48c37d0b-4c6b-4de2-af29-7563d36616b0" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2037.png"><img style="width:500px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2037.png"/></a><figcaption>Some aesthetics are better suited to numerical (size, color) or categorical (shape) data types. The last graph didn’t work because you can’t map a numerical value to shape. </figcaption></figure><p id="9e591153-7670-4fe6-b8b4-0cf7bedb5425" class="">
+</p><p id="82fbe3ff-934a-446a-98bd-f5acf137ab8d" class="">In the scatterplot of <code>hwy</code> vs. <code>displ</code>, what happens if you map a third variable to <code>linewidth</code>?</p><p id="aed75311-f814-485b-ba61-de8a63ed2421" class="">What happens if you map the same variable to multiple aesthetics?</p><pre id="059aade0-2e50-40ad-8757-93b5aa9d6a4a" class="code code-wrap"><code>ggplot(  
+	data=mpg,  
+	mapping= aes(x=displ, y=hwy, linewidth=cty)
+) +   
+	geom_point()
+</code></pre><figure id="db1d1e27-4051-4ddb-8bd1-fdfa2a6c1f8a" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2038.png"><img style="width:491px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2038.png"/></a><figcaption>Nothing, this plot didn’t utilize lines as a geom. Mapping the same variable to multiple aesthetics creates very specific differentiation, see above for color and size. </figcaption></figure><p id="5ce559be-a960-4241-8f62-c2483dad7c38" class="">Make a scatterplot of <code>bill_depth_mm</code> vs. <code>bill_length_mm</code> and color the points by <code>species</code>. What does adding coloring by species reveal about the relationship between these two variables?</p><pre id="d1aa6ad3-a7c1-43df-b067-7a6e7e40a36d" class="code code-wrap"><code>ggplot(
+	data=penguins,
+	mapping=aes(x=bill_length_mm, y=bill_depth_mm)
+) +
+	geom_point()
+
+ggplot(
+	data=penguins,
+	mapping=aes(x=bill_length_mm, y=bill_depth_mm, color=species)
+) +
+	geom_point()
+
+ggplot(
+	data=penguins,
+	mapping=aes(x=bill_length_mm, y=bill_depth_mm)
+) +
+	geom_point() +
+	facet_wrap(~species)</code></pre><figure id="8c9a70ef-0454-49af-9d35-cff1eb36b335" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2039.png"><img style="width:497px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2039.png"/></a></figure><figure id="4689c1cd-c4e6-41e3-bbf6-1ee0f765e034" class="image" style="text-align:left"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2040.png"><img style="width:495px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2040.png"/></a><figcaption>Overall, there doesn’t seem to be a trend between bill length and depth. However, by species, there may be. This would be easier to visualize if we used facets. </figcaption></figure><figure id="51e37707-ed28-439c-a199-636d6e9b8336" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2041.png"><img style="width:539px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2041.png"/></a></figure><p id="e2fdc019-2d92-4e42-8ed0-eaccd822044a" class="">Why does the following yield two separate legends? How would you fix it to combine the two legends?<div class="indented"><pre id="52fc33ef-892c-4632-8fd3-51dbdb0e09a2" class="code code-wrap"><code>
+ggplot(
+  data = penguins,
+  mapping = aes(
+    x = bill_length_mm, y = bill_depth_mm, 
+    color = species, shape = species
+  )
+) +
+  geom_point() +
+  labs(color = &quot;Species&quot;)
+
+
+#FIX
+
+ggplot(
+  data = penguins,
+  mapping = aes(
+    x = bill_length_mm, y = bill_depth_mm, 
+    color = species, shape = species
+  )
+) +
+  geom_point() # The label for color is not needed, it is generated automatically at the global level.</code></pre><figure id="0864765c-4bc0-461a-ac6e-e2fb4cea17ae" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2042.png"><img style="width:1478px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2042.png"/></a></figure><figure id="c010a49d-2edb-4bad-8e4a-cb0fb99d7cab" class="image"><a href="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2043.png"><img style="width:428px" src="2%20Data%20Visualization%201cbdf78c519a4ff896f56166d2aa3812/Untitled%2043.png"/></a><figcaption>FIXED</figcaption></figure><h2 id="33d3ced8-3aca-45bd-b21a-ed2a17fc9566" class="">Saving plots</h2><p id="0bea279a-61f5-45e0-85e2-e4dae0c2b896" class="">Use ggsave() to save to disk at the local directory. </p><pre id="ec009bbe-c236-4baf-ac2e-ece6aa6c4e81" class="code code-wrap"><code>ggsave(
+  filename, # name of file; can change type to png, jpeg, pdf, etc.
+  plot = last_plot(), # uses last run ggplot or can specify
+  device = NULL, # device to use
+  path = NULL, # path if outside working dir
+  scale = 1, # scaling factor
+  width = NA, # height and widgth must be specified OR will use current Viwer setting 
+  height = NA,
+  units = c(&quot;in&quot;, &quot;cm&quot;, &quot;mm&quot;, &quot;px&quot;), # width and height units
+  dpi = 300, # plot resolution. 
+  limitsize = TRUE, # if true, will not save larger than 50x50 inches
+  bg = NULL, # background color; if NULL uses plot theme
+  ...
+)
+
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+
+ggsave(filename = &quot;my-plot.png&quot;)</code></pre><p id="45524a19-f1be-4b6a-b834-802b72c1bfc2" class="block-color-red_background"><strong>BEST PRACTICE TIP: </strong>always specify output width/height for plots. </p><p id="3cdc332e-b081-4ba1-8dd2-b52c43e8a898" class="block-color-red_background"><strong>BEST PRACTICE TIP: </strong>assemble final reports in Quarto.</p><h3 id="02a6e348-3c02-40d7-82d5-bcc2b52d876f" class="">2.6.1 Exercises</h3><p id="22e17227-58f2-4abd-b152-1d3ae401ef22" class="">Run the following lines of code. Which of the two plots is saved as <code>mpg-plot.png</code>? Why?</p><pre id="c58eed02-3418-4e79-ad77-a961a0469f76" class="code code-wrap"><code>ggplot(mpg, aes(x = class)) +
+  geom_bar()
+
+ggplot(mpg, aes(x = cty, y = hwy)) +
+  geom_point()
+
+ggsave(&quot;mpg-plot.png&quot;)</code></pre><p id="51a8913a-2398-401d-be64-f6a2e62024b5" class="">What do you need to change in the code above to save the plot as a PDF instead of a PNG?</p><pre id="5181e29b-6646-4687-bfbf-5f2eb054210a" class="code code-wrap"><code>ggsave(filename=&quot;mpg-plot.pdf&quot;)</code></pre></div></p></div></article></body></html>
