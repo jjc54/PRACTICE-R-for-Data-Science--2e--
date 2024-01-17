@@ -1,7 +1,7 @@
 ---
-title: "Ch. 4 Exercises"
+title: "Ch. 3 Exercises"
 subtitle: "Data Transformation"
-author: "Joshua J. Cook, M.S."
+author: "Joshua J. Cook, M.S., ACRP-PM, CCRC"
 date: "today"
 format: html
 embed-resources: true
@@ -17,4 +17,6 @@ colorlinks: TRUE
 library(tidyverse)
 my_variable <- 10
 #my_varıable #The i is not an i!
+
+
 ```
